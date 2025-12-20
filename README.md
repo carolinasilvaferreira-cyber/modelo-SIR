@@ -67,5 +67,8 @@ de compreender não apenas os resultados da simulação, mas também os limites 
 computacionais que moldam esses resultados.
 
 Este trabalho evidencia que a modelagem epidemiológica computacional é tanto um exercício
-de abstração quanto de reflexão crítica sobre o que pode — e o que não pode — ser
+de abstração quanto de reflexão crítica sobre o que pode — e o que não pode — ser 
 representado por algoritmos.
+
+![modeloSIR](https://github.com/user-attachments/assets/fa76bdc1-e30f-4e7e-94dc-22f7b56a53d0)
+
