@@ -1,4 +1,6 @@
-# Resumo
+# Modelagem Computacional Discreta da Propagação da Gripe Utilizando um Modelo SIR
+
+## Resumo
 A gripe (influenza) é uma doença respiratória infecciosa caracterizada por transmissão rápida e recorrência sazonal. Modelos epidemiológicos são frequentemente utilizados para compreender sua dinâmica de propagação. Neste trabalho, apresentamos uma implementação computacional discreta do modelo SIR (Suscetíveis–Infectados–Recuperados), com o objetivo de explorar como regras locais simples, quando iteradas em um sistema computacional finito, produzem padrões epidêmicos globais. O foco do estudo não é a previsão quantitativa da gripe, mas a análise conceitual da modelagem epidemiológica sob restrições computacionais explícitas. Os resultados evidenciam a emergência de comportamentos típicos de surtos epidêmicos e destacam os limites inerentes à abstração computacional.
 
 
@@ -32,6 +34,4 @@ Nesse sentido, o modelo SIR discreto funciona como um laboratório conceitual, n
 ## Conclusão
 O modelo computacional discreto apresentado neste trabalho demonstra como a propagação da gripe pode ser explorada a partir de regras simples e iterativas. Embora não tenha como objetivo realizar previsões epidemiológicas precisas, a simulação evidencia a emergência de padrões globais típicos de surtos infecciosos.
 A análise reforça a ideia de que a epidemiologia computacional deve ser compreendida não apenas como uma ferramenta aplicada, mas como uma linguagem para pensar sistemas complexos sob restrições computacionais. Assim, o modelo SIR discreto contribui para a compreensão conceitual dos limites e possibilidades da modelagem computacional de doenças infecciosas.
-Disponibilidade do Código
-O código-fonte completo da simulação está disponível em:
 
