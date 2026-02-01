@@ -1,74 +1,37 @@
+# Resumo
+A gripe (influenza) é uma doença respiratória infecciosa caracterizada por transmissão rápida e recorrência sazonal. Modelos epidemiológicos são frequentemente utilizados para compreender sua dinâmica de propagação. Neste trabalho, apresentamos uma implementação computacional discreta do modelo SIR (Suscetíveis–Infectados–Recuperados), com o objetivo de explorar como regras locais simples, quando iteradas em um sistema computacional finito, produzem padrões epidêmicos globais. O foco do estudo não é a previsão quantitativa da gripe, mas a análise conceitual da modelagem epidemiológica sob restrições computacionais explícitas. Os resultados evidenciam a emergência de comportamentos típicos de surtos epidêmicos e destacam os limites inerentes à abstração computacional.
+
+
 ## Introdução
 
-A modelagem matemática e computacional desempenha um papel central na compreensão da
-dinâmica de doenças infecciosas. No entanto, todo modelo é uma abstração da realidade,
-limitada tanto por escolhas conceituais quanto pelas capacidades da computação.
+A gripe é uma doença viral amplamente disseminada, responsável por surtos anuais que impactam sistemas de saúde em todo o mundo. Sua transmissão ocorre principalmente por contato direto e aerossóis, tornando-a um exemplo clássico para o estudo de fenômenos epidemiológicos em populações humanas.
+A modelagem matemática da gripe tradicionalmente utiliza equações diferenciais contínuas para descrever a evolução temporal dos indivíduos suscetíveis, infectados e recuperados. Entretanto, a implementação computacional desses modelos exige discretizações que alteram a forma como o fenômeno é representado. Dessa forma, a epidemiologia computacional não deve ser vista apenas como uma ferramenta de previsão, mas também como um campo de investigação sobre os limites e possibilidades da computação aplicada a sistemas complexos.
+Neste trabalho, a gripe é adotada como fenômeno epidemiológico de referência para a implementação de um modelo SIR discreto. O objetivo é refletir sobre o comportamento emergente do sistema e sobre as simplificações necessárias para tornar o fenômeno computável.
 
-Neste trabalho, utilizamos um modelo SIR discreto para explorar a propagação de uma doença
-em uma população fechada. A escolha por um modelo discreto reflete a natureza finita e
-iterativa dos sistemas computacionais, aproximando a simulação da forma como algoritmos
-operam em máquinas reais.
 
-## Descrição do Modelo
+## Modelo e Metodologia Computacional
+O modelo SIR divide a população em três compartimentos: suscetíveis (S), infectados (I) e recuperados (R). No contexto da gripe, indivíduos suscetíveis podem contrair o vírus ao entrar em contato com indivíduos infectados, enquanto indivíduos infectados eventualmente se recuperam e deixam de participar da transmissão.
+A população total é considerada constante, homogênea e bem misturada. O tempo é tratado de forma discreta, em passos que representam unidades temporais finitas. Em cada iteração do algoritmo, duas regras governam a dinâmica do sistema: (i) uma fração dos suscetíveis torna-se infectada em função do número de indivíduos infectados; (ii) uma fração dos infectados se recupera.
+Essa abordagem evita o uso explícito de equações diferenciais contínuas e torna o processo computacional transparente, permitindo observar diretamente como o estado do sistema é atualizado a cada passo temporal. O código-fonte completo da simulação está disponível em repositório público no GitHub, cujo link é fornecido ao final deste artigo.
 
-A população é dividida em três compartimentos:
-
-- **S (Suscetíveis)**: indivíduos que podem contrair a doença
-- **I (Infectados)**: indivíduos que transmitem a doença
-- **R (Recuperados)**: indivíduos que não participam mais da transmissão
-
-O tempo é tratado em passos discretos (dias). A cada iteração, regras locais determinam a
-transição entre os compartimentos, baseadas em taxas de infecção e recuperação.
-
-Diferentemente de abordagens contínuas baseadas em equações diferenciais, aqui o modelo é
-implementado diretamente como um algoritmo iterativo, explicitando o processo computacional.
-
-## Metodologia Computacional
-
-A simulação inicia com um único indivíduo infectado em uma população de 100.000 pessoas.
-Em cada passo temporal:
-
-- Uma fração dos suscetíveis torna-se infectada, proporcional ao número de contatos com
-infectados.
-- Uma fração dos infectados se recupera.
-
-Essas regras são aplicadas de forma determinística, permitindo observar como padrões
-globais emergem a partir de regras simples.
 
 ## Resultados
+A simulação computacional do modelo SIR aplicado à gripe apresenta um crescimento inicial do número de infectados, seguido por um pico epidêmico e posterior declínio, conforme ilustrado na Figura 1. Esse comportamento é característico de surtos de gripe em populações fechadas e emerge naturalmente da aplicação iterativa das regras locais do modelo, sem que o pico seja explicitamente programado no código.
+O pico de infectados não é imposto explicitamente no código, mas surge como consequência da interação entre a redução progressiva de indivíduos suscetíveis e o aumento do número de recuperados. Observa-se ainda que pequenas variações nos parâmetros de infecção e recuperação resultam em diferenças significativas na altura e no momento do pico epidêmico.
+Esses resultados ilustram como sistemas computacionais simples podem reproduzir padrões qualitativos observados em fenômenos epidemiológicos reais, mesmo quando baseados em abstrações extremas.
 
-A simulação apresenta um crescimento inicial rápido do número de infectados, seguido por
-um pico epidêmico e posterior declínio. Esse comportamento não foi explicitamente
-programado, mas emerge da interação entre as regras de infecção e recuperação.
+![123](https://github.com/user-attachments/assets/3272ba70-2ee0-4fbd-9df9-a6cb1c84efc8)
 
-Observa-se também a redução contínua do número de suscetíveis e o aumento monotônico dos
-recuperados, refletindo a dinâmica típica de epidemias em populações fechadas.
 
-## Discussão e Limitações
+## Discussão
+Apesar de sua utilidade exploratória, o modelo apresenta limitações importantes. A ausência de estrutura espacial, a suposição de população homogênea e a inexistência de mudanças comportamentais reduzem a capacidade do modelo de representar com fidelidade a dinâmica real da gripe.
+Entretanto, tais limitações não devem ser interpretadas apenas como deficiências epidemiológicas. Elas decorrem diretamente da necessidade de manter o sistema computável em uma máquina finita, operando em tempo discreto e sob regras claramente definidas. A simplificação do fenômeno é, portanto, uma condição necessária para a simulação computacional.
+Nesse sentido, o modelo SIR discreto funciona como um laboratório conceitual, no qual é possível investigar como escolhas computacionais moldam a representação de processos biológicos complexos.
 
-Apesar de capturar padrões gerais, o modelo apresenta limitações importantes:
-
-- Assume população homogênea e bem misturada
-- Não considera estrutura espacial ou redes de contato
-- Ignora mudanças comportamentais e intervenções externas
-- Utiliza parâmetros constantes no tempo
-
-Essas limitações não são apenas epidemiológicas, mas também computacionais. A necessidade
-de manter o sistema finito, discreto e computável impõe simplificações que afastam o modelo
-da complexidade do mundo real.
-
-Assim, o modelo deve ser interpretado como uma ferramenta exploratória, e não preditiva.
 
 ## Conclusão
-
-O modelo SIR discreto implementado demonstra como sistemas computacionais simples podem
-produzir comportamentos complexos e informativos. A abordagem adotada reforça a importância
-de compreender não apenas os resultados da simulação, mas também os limites conceituais e
-computacionais que moldam esses resultados.
-
-Este trabalho evidencia que a modelagem epidemiológica computacional é tanto um exercício
-de abstração quanto de reflexão crítica sobre o que pode — e o que não pode — ser 
-representado por algoritmos.
-
-![modeloSIR](https://github.com/user-attachments/assets/fa76bdc1-e30f-4e7e-94dc-22f7b56a53d0)
+O modelo computacional discreto apresentado neste trabalho demonstra como a propagação da gripe pode ser explorada a partir de regras simples e iterativas. Embora não tenha como objetivo realizar previsões epidemiológicas precisas, a simulação evidencia a emergência de padrões globais típicos de surtos infecciosos.
+A análise reforça a ideia de que a epidemiologia computacional deve ser compreendida não apenas como uma ferramenta aplicada, mas como uma linguagem para pensar sistemas complexos sob restrições computacionais. Assim, o modelo SIR discreto contribui para a compreensão conceitual dos limites e possibilidades da modelagem computacional de doenças infecciosas.
+Disponibilidade do Código
+O código-fonte completo da simulação está disponível em:
 
